@@ -55,7 +55,7 @@ public class User extends BaseEntity {
     @Column(name = "is_active", nullable = false)
     private boolean isActive;
 
-    @OneToMany(mappedBy = "User")
+    @OneToMany(mappedBy = "user")
     private Set<Order> orders;
 
 }

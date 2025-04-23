@@ -34,9 +34,9 @@ public class Supplier extends BaseEntity {
     @Column(name = "is_active", nullable = false)
     private boolean isActive;
 
-    @OneToMany(mappedBy = "Supplier")
+    @OneToMany(mappedBy = "supplier")
     private Set<SupplierBonus> supplierBonuses;
 
-    @OneToMany(mappedBy = "Supplier")
+    @OneToMany(mappedBy = "supplier")
     private Set<Delivery> delivery;
 }

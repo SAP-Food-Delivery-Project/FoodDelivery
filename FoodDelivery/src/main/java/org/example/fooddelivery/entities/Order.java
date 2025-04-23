@@ -44,6 +44,6 @@ public class Order extends BaseEntity {
     @Column(name = "is_active", nullable = false)
     private boolean isActive;
 
-    @OneToOne(mappedBy = "Order")
+    @OneToOne(mappedBy = "order")
     private Delivery delivery;
 }

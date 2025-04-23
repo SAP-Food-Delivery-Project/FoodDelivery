@@ -34,13 +34,13 @@ public class FoodProducer extends BaseEntity {
     @Column(name = "is_active", nullable = false)
     private boolean isActive;
 
-    @OneToMany(mappedBy = "FoodProducer")
+    @OneToMany(mappedBy = "foodProducer")
     private Set<Food> foods;
 
-    @OneToMany(mappedBy = "FoodProducer")
+    @OneToMany(mappedBy = "foodProducer")
     private Set<Beverage> beverages;
 
-    @OneToMany(mappedBy = "FoodProducer")
+    @OneToMany(mappedBy = "foodProducer")
     private Set<Order> orders;
 
 }
