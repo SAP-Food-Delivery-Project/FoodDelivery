@@ -4,10 +4,7 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import java.util.Set;
 
@@ -39,4 +36,16 @@ public class Supplier extends BaseEntity {
 
     @OneToMany(mappedBy = "supplier")
     private Set<Delivery> delivery;
+
+    @Builder
+    public Supplier(String firstName,
+                    String lastName,
+                    String phoneNumber,
+                    float rate){
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.phoneNumber = phoneNumber;
+        this.rate = rate;
+        this.isActive = true;
+    }
 }
