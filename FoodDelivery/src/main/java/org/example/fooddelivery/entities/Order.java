@@ -1,10 +1,7 @@
 package org.example.fooddelivery.entities;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
@@ -46,4 +43,25 @@ public class Order extends BaseEntity {
 
     @OneToOne(mappedBy = "order")
     private Delivery delivery;
+
+    @Builder
+    public Order(String address,
+                 String city,
+                 String phoneNumber,
+                 BigDecimal price,
+                 LocalDateTime order_date,
+                 FoodProducer foodProducer,
+                 User user,
+                 Delivery delivery){
+        this.address = address;
+        this.city = city;
+        this.phoneNumber = phoneNumber;
+        this.price = price;
+        this.order_date = order_date;
+        this.foodProducer = foodProducer;
+        this.user = user;
+        this.delivery = delivery;
+        this.order_cancelled = false;
+        this.isActive = true;
+    }
 }

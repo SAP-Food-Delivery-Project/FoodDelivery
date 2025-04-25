@@ -2,10 +2,7 @@ package org.example.fooddelivery.entities;
 
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import java.time.LocalDateTime;
 
@@ -28,4 +25,14 @@ public class Delivery extends BaseEntity {
 
     @Column(name = "is_active", nullable = false)
     private boolean isActive;
+
+    @Builder
+    public Delivery(int deliveryTime,
+                    Supplier supplier,
+                    Order order){
+        this.deliveryTime = deliveryTime;
+        this.supplier = supplier;
+        this.order = order;
+        this.isActive = true;
+    }
 }

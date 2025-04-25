@@ -43,4 +43,19 @@ public class FoodProducer extends BaseEntity {
     @OneToMany(mappedBy = "foodProducer")
     private Set<Order> orders;
 
+    @Builder
+    public FoodProducer(String name,
+                        String phoneNumber,
+                        String address,
+                        String city,
+                        float rate){
+
+        this.name = name;
+        this.phoneNumber = phoneNumber;
+        this.address = address;
+        this.city = city;
+        this.rate = rate;
+        this.isActive = true;
+    }
+
 }

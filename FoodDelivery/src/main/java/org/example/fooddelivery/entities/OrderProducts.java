@@ -1,10 +1,7 @@
 package org.example.fooddelivery.entities;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import java.util.Set;
 
@@ -27,5 +24,16 @@ public class OrderProducts extends BaseEntity{
 
     @OneToMany
     private Set<Beverage> beverages;
+
+    @Builder
+    public OrderProducts(int quantity,
+                         Order order,
+                         Set<Food> foods,
+                         Set<Beverage> beverages){
+        this.quantity = quantity;
+        this.order = order;
+        this.foods = foods;
+        this.beverages = beverages;
+    }
 
 }
