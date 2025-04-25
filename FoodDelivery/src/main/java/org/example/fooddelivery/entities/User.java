@@ -27,7 +27,7 @@ public class User extends BaseEntity {
     @Column(name = "password", nullable = false)
     private String password;
 
-    @Column(name = "telephone_number",unique = true, nullable = false)
+    @Column(name = "telephone_number", unique = true, nullable = false)
     private String phoneNumber;
 
     @Column(name = "birthday", nullable = false)
@@ -61,6 +61,7 @@ public class User extends BaseEntity {
                 String email,
                 String password,
                 String phoneNumber,
+                LocalDate birthDate,
                 String address,
                 String city,
                 BigDecimal balance,
@@ -70,6 +71,7 @@ public class User extends BaseEntity {
         this.email = email;
         this.password = password;
         this.phoneNumber = phoneNumber;
+        this.birthDate = birthDate;
         this.address = address;
         this.city = city;
         this.balance = balance;
