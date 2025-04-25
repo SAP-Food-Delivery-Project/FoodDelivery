@@ -1,10 +1,7 @@
 package org.example.fooddelivery.entities;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -29,4 +26,13 @@ public class SupplierBonus extends BaseEntity{
     @Column(name = "is_active", nullable = false)
     private boolean isActive;
 
+
+    @Builder
+    public SupplierBonus(BigDecimal bonus,
+                         Supplier supplier){
+        this.bonus = bonus;
+        this.supplier = supplier;
+        this.current_day = LocalDate.now();
+        this.isActive = true;
+    }
 }

@@ -1,10 +1,7 @@
 package org.example.fooddelivery.entities;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import java.math.BigDecimal;
 
@@ -30,5 +27,17 @@ public class Beverage extends BaseEntity {
 
     @Column(name = "is_active", nullable = false)
     private boolean isActive;
+
+    @Builder
+    public Beverage(String name,
+                    float liters,
+                    BigDecimal price,
+                    FoodProducer foodProducer){
+        this.name = name;
+        this.liters = liters;
+        this.price = price;
+        this.foodProducer = foodProducer;
+        this.isActive = true;
+    }
 
 }

@@ -1,10 +1,7 @@
 package org.example.fooddelivery.entities;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -57,5 +54,28 @@ public class User extends BaseEntity {
 
     @OneToMany(mappedBy = "user")
     private Set<Order> orders;
+
+    @Builder
+    public User(String firstName,
+                String lastName,
+                String email,
+                String password,
+                String phoneNumber,
+                String address,
+                String city,
+                BigDecimal balance,
+                Role role){
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.password = password;
+        this.phoneNumber = phoneNumber;
+        this.address = address;
+        this.city = city;
+        this.balance = balance;
+        this.role = role;
+        this.creationDate = LocalDate.now();
+        this.isActive = true;
+    }
 
 }
