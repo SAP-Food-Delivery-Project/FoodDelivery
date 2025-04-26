@@ -12,7 +12,7 @@ import java.time.LocalDateTime;
 @Setter
 @Table(name = "orders")
 @Entity
-public class Order extends BaseEntity {
+public class Order extends BaseEntity{
 
     @Column(name = "address", nullable = false)
     private String address;
@@ -20,11 +20,11 @@ public class Order extends BaseEntity {
     @Column(name = "city", nullable = false)
     private String city;
 
-    @Column(name = "telephone_number",unique = true, nullable = false)
-    private String phoneNumber;
+//    @Column(name = "telephone_number",unique = true, nullable = false)
+//    private String phoneNumber;
 
-    @Column(name = "price", nullable = false)
-    private BigDecimal price;
+//    @Column(name = "price", nullable = false)
+//    private BigDecimal price;
 
     @Column(name = "order_date", nullable = false)
     private LocalDateTime order_date;
@@ -47,16 +47,12 @@ public class Order extends BaseEntity {
     @Builder
     public Order(String address,
                  String city,
-                 String phoneNumber,
-                 BigDecimal price,
                  LocalDateTime order_date,
                  FoodProducer foodProducer,
                  User user,
                  Delivery delivery){
         this.address = address;
         this.city = city;
-        this.phoneNumber = phoneNumber;
-        this.price = price;
         this.order_date = order_date;
         this.foodProducer = foodProducer;
         this.user = user;

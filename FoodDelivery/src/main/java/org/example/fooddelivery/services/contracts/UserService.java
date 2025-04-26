@@ -1,5 +1,6 @@
 package org.example.fooddelivery.services.contracts;
 
+import org.example.fooddelivery.entities.User;
 import org.example.fooddelivery.entities.dtos.UserDtos.CreateUserDto;
 import org.example.fooddelivery.entities.dtos.UserDtos.UpdateUserDto;
 import org.example.fooddelivery.entities.dtos.UserDtos.UserDto;
@@ -10,6 +11,8 @@ import java.util.List;
 public interface UserService {
 
     UserDto getSingleUser(int id);
+
+    User getSingleUserEntity(int id);
 
     List<UserDto> getAllUsers();
 

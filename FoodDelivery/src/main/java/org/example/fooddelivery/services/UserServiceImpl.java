@@ -28,6 +28,13 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public User getSingleUserEntity(int id) {
+        return userRepository.findUserByIdAndIsActiveTrue(id).orElseThrow(
+                () -> new EntityNotFoundException("User with id " + id + " not found")
+        );
+    }
+
+    @Override
     public List<UserDto> getAllUsers() {
         return mapperUtil.mapList(userRepository.findAllByIsActiveTrue(), UserDto.class);
     }
