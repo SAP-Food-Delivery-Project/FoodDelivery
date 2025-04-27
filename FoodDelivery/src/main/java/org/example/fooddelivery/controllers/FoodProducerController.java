@@ -10,9 +10,9 @@ import org.example.fooddelivery.services.contracts.FoodProducerService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
-@Controller
+@RestController
 @RequiredArgsConstructor
-@RequestMapping("api/foodproducers")
+@RequestMapping("/api/foodproducers")
 public class FoodProducerController {
 
     private final FoodProducerService foodProducerService;
@@ -28,7 +28,7 @@ public class FoodProducerController {
     }
 
     @GetMapping("/city/{city}/address/{address}")
-    public FoodProducerDto getFoodProdycerByAddressAndCity(@PathVariable String city, String address){
+    public FoodProducerDto getFoodProducerByAddressAndCity(@PathVariable String city, String address){
         return this.foodProducerService.getSingleFoodProducer(city, address);
     }
 

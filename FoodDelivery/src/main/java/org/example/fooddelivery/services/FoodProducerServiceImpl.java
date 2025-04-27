@@ -82,6 +82,7 @@ public class FoodProducerServiceImpl implements FoodProducerService {
         return mapperUtil.getModelMapper().map(foodProducer, FoodProducerDto.class);
     }
 
+    @Override
     public void deactivateFoodProducer(int id){
 
         FoodProducer foodProducer = foodProducerRepository.findFoodProducerByIdAndIsActiveTrue(id)
