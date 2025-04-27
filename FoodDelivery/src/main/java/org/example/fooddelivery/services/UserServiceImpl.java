@@ -7,7 +7,7 @@ import org.example.fooddelivery.entities.dtos.UserDtos.UpdateUserDto;
 import org.example.fooddelivery.entities.dtos.UserDtos.UserDto;
 import org.example.fooddelivery.entities.dtos.UserDtos.UserDtoWithIdAndEmail;
 import org.example.fooddelivery.exceptions.EntityNotFoundException;
-import org.example.fooddelivery.repository.UserRepository;
+import org.example.fooddelivery.repositories.UserRepository;
 import org.example.fooddelivery.services.contracts.UserService;
 import org.example.fooddelivery.util.MapperUtil;
 import org.springframework.stereotype.Service;

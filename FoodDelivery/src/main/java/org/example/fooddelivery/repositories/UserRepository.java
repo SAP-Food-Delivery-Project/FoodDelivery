@@ -1,4 +1,4 @@
-package org.example.fooddelivery.repository;
+package org.example.fooddelivery.repositories;
 
 
 import org.example.fooddelivery.entities.User;

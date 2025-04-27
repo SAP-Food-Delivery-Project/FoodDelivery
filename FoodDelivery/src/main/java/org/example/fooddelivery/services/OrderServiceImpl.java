@@ -6,7 +6,7 @@ import org.example.fooddelivery.entities.dtos.OrderDtos.OrderDto;
 import org.example.fooddelivery.entities.dtos.OrderDtos.UpdateOrderDto;
 import org.example.fooddelivery.exceptions.EntityNotFoundException;
 import org.example.fooddelivery.exceptions.OperationNotSupportedException;
-import org.example.fooddelivery.repository.OrderRepository;
+import org.example.fooddelivery.repositories.OrderRepository;
 import org.example.fooddelivery.services.contracts.OrderService;
 import org.example.fooddelivery.services.contracts.UserService;
 import org.example.fooddelivery.util.MapperUtil;
