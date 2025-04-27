@@ -12,6 +12,8 @@ public interface FoodProducerService {
 
     FoodProducerDto getSingleFoodProducer(int id);
 
+    FoodProducer getSingleFoodProducerEntity(int id);
+
     FoodProducerDto getSingleFoodProducer(String name);
 
     FoodProducerDto getSingleFoodProducer(String city, String address);

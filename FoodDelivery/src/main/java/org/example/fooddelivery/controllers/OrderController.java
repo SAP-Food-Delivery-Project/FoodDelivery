@@ -7,10 +7,6 @@ import org.example.fooddelivery.entities.dtos.OrderDtos.CreateOrderDto;
 import org.example.fooddelivery.entities.dtos.OrderDtos.OrderDto;
 import org.example.fooddelivery.entities.dtos.OrderDtos.OrderDtoWithId;
 import org.example.fooddelivery.entities.dtos.OrderDtos.UpdateOrderDto;
-import org.example.fooddelivery.entities.dtos.UserDtos.CreateUserDto;
-import org.example.fooddelivery.entities.dtos.UserDtos.UpdateUserDto;
-import org.example.fooddelivery.entities.dtos.UserDtos.UserDto;
-import org.example.fooddelivery.entities.dtos.UserDtos.UserDtoWithIdAndEmail;
 import org.example.fooddelivery.services.contracts.OrderService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -34,10 +30,10 @@ public class OrderController {
         return orderService.getAllOrders();
     }
 
-//    @PostMapping
-//    public OrderDtoWithId createOrder(@RequestBody CreateOrderDto createOrderDto) {
-//        return orderService.createOrder(createOrderDto);
-//    }
+    @PostMapping
+    public OrderDtoWithId createOrder(@RequestBody CreateOrderDto createOrderDto) {
+        return orderService.createOrder(createOrderDto);
+    }
 
 
     @PutMapping("/{id}")
