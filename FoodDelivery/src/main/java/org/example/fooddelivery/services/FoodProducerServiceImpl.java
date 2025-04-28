@@ -1,7 +1,5 @@
 package org.example.fooddelivery.services;
 
-import jakarta.validation.constraints.NotNull;
-import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import org.example.fooddelivery.entities.FoodProducer;
 import org.example.fooddelivery.entities.dtos.FoodProductDtos.CreateFoodProducerDto;
@@ -28,6 +26,13 @@ public class FoodProducerServiceImpl implements FoodProducerService {
         return mapperUtil.getModelMapper()
                         .map(foodProducerRepository.findFoodProducerByIdAndIsActiveTrue(id),
                             FoodProducerDto.class);
+    }
+
+    @Override
+    public FoodProducer getSingleFoodProducerEntity(int id){
+        return foodProducerRepository.findFoodProducerByIdAndIsActiveTrue(id).orElseThrow(
+                () -> new EntityNotFoundException("No FoodProducer found with id: " + id)
+        );
     }
 
     @Override

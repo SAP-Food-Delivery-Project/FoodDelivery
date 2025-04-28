@@ -9,7 +9,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.example.fooddelivery.entities.Delivery;
 import org.example.fooddelivery.entities.FoodProducer;
-import org.example.fooddelivery.entities.User;
 import org.example.fooddelivery.entities.dtos.UserDtos.UserDto;
 
 import java.math.BigDecimal;
