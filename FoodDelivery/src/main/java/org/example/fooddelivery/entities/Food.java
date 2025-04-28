@@ -17,19 +17,19 @@ public class Food extends BaseEntity {
     private String name;
 
     @Column(name = "weight", nullable = false)
-    private double weight;
+    private float weight;
 
     @Column(name = "calories", nullable = false)
-    private double calories;
+    private float calories;
 
     @Column(name = "fats", nullable = false)
-    private double fats;
+    private float fats;
 
     @Column(name = "carbohydrates", nullable = false)
-    private double carbohydrates;
+    private float carbohydrates;
 
     @Column(name = "protein", nullable = false)
-    private double protein;
+    private float protein;
 
     @Column(name = "price", nullable = false)
     private BigDecimal price;
