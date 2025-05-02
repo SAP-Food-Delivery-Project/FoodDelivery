@@ -16,7 +16,7 @@ public interface SupplierService {
 
     Supplier getSingleSupplierEntity(int id);
 
-    List<SupplierDto> getAllSupplierByName(String name)
+    List<SupplierDto> getAllSupplierByName(String name);
 
     List<SupplierDto> getAllSupplier();
 
