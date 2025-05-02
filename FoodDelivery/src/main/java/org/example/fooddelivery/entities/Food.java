@@ -40,6 +40,11 @@ public class Food extends BaseEntity {
     @ManyToOne(fetch = FetchType.LAZY)
     private FoodProducer foodProducer;
 
+    @Column(name = "foodType", nullable = false)
+    @Enumerated(EnumType.STRING)
+    private FoodType foodType;
+
+
     @Column(name = "is_active", nullable = false)
     private boolean isActive;
 
@@ -52,7 +57,8 @@ public class Food extends BaseEntity {
                 float protein,
                 BigDecimal price,
                 String products,
-                FoodProducer foodProducer){
+                FoodProducer foodProducer,
+                FoodType foodType) {
         this.name = name;
         this.weight = weight;
         this.calories = calories;
@@ -62,6 +68,7 @@ public class Food extends BaseEntity {
         this.price = price;
         this.products = products;
         this.foodProducer = foodProducer;
+        this.foodType = foodType;
         this.isActive = true;
     }
 }
