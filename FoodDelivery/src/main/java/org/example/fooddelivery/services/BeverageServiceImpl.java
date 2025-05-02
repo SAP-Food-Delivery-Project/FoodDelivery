@@ -1,6 +1,5 @@
 package org.example.fooddelivery.services;
 
-import jakarta.persistence.EntityResult;
 import lombok.RequiredArgsConstructor;
 import org.example.fooddelivery.entities.Beverage;
 import org.example.fooddelivery.entities.dtos.BeverageDtos.BeverageDto;
@@ -12,7 +11,6 @@ import org.example.fooddelivery.repositories.BeverageRepository;
 import org.example.fooddelivery.services.contracts.BeverageService;
 import org.example.fooddelivery.util.MapperUtil;
 import org.springframework.stereotype.Service;
-import org.springframework.web.servlet.function.EntityResponse;
 
 @Service
 @RequiredArgsConstructor
@@ -25,6 +23,12 @@ public class BeverageServiceImpl implements BeverageService {
     public BeverageDto getSingleBeverageById(int id) {
         return mapperUtil.getModelMapper()
                 .map(beverageRepository.findBeverageByIdAndIsActiveTrue(id), BeverageDto.class);
+    }
+
+    @Override
+    public Beverage getSingleBeverageEntityById(int id) {
+        return (beverageRepository.findBeverageByIdAndIsActiveTrue(id).orElseThrow(
+                () -> new EntityNotFoundException("Beverage not found with id " + id)));
     }
 
     @Override
