@@ -6,6 +6,7 @@ import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.example.fooddelivery.entities.FoodType;
 import org.example.fooddelivery.entities.dtos.FoodProductDtos.FoodProducerDto;
 
 import java.math.BigDecimal;
@@ -42,6 +43,9 @@ public class CreateFoodDto {
     @NotNull
     @DecimalMin(value = "0.0", message = "Food price cannot be less than 0.0")
     private BigDecimal price;
+
+    @NotNull
+    private FoodType foodType;
 
     @NotNull
     @Size(min = 2, message = "Food product cannot be less than one product")

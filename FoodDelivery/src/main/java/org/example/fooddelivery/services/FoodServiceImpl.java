@@ -49,6 +49,7 @@ public class FoodServiceImpl implements FoodService {
                 .carbohydrates(createFoodDto.getCarbohydrates())
                 .protein(createFoodDto.getProtein())
                 .price(createFoodDto.getPrice())
+                .foodType(createFoodDto.getFoodType())
                 .products(createFoodDto.getFoodProducts())
                 .build();
 
