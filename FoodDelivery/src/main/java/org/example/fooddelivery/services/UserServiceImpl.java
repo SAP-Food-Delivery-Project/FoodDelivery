@@ -24,7 +24,8 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public UserDto getSingleUser(int id) {
-        return mapperUtil.getModelMapper().map(userRepository.findUserByIdAndIsActiveTrue(id), UserDto.class);
+        return mapperUtil.getModelMapper()
+                .map(userRepository.findUserByIdAndIsActiveTrue(id), UserDto.class);
     }
 
     @Override
