@@ -2,15 +2,12 @@ package org.example.fooddelivery.services;
 
 import lombok.RequiredArgsConstructor;
 import org.example.fooddelivery.entities.Food;
-import org.example.fooddelivery.entities.FoodProducer;
 import org.example.fooddelivery.entities.dtos.FoodDtos.CreateFoodDto;
 import org.example.fooddelivery.entities.dtos.FoodDtos.FoodDto;
 import org.example.fooddelivery.entities.dtos.FoodDtos.FoodDtoWithId;
 import org.example.fooddelivery.entities.dtos.FoodDtos.UpdateFoodDto;
-import org.example.fooddelivery.entities.dtos.FoodProductDtos.FoodProducerDtoWithId;
 import org.example.fooddelivery.exceptions.EntityNotFoundException;
 import org.example.fooddelivery.repositories.FoodRepository;
-import org.example.fooddelivery.services.contracts.FoodProducerService;
 import org.example.fooddelivery.services.contracts.FoodService;
 import org.example.fooddelivery.util.MapperUtil;
 import org.springframework.stereotype.Service;
@@ -26,6 +23,12 @@ public class FoodServiceImpl implements FoodService {
     public FoodDto getSingleFood(int id) {
         return mapperUtil.getModelMapper()
                 .map(foodRepository.findFoodByIdAndIsActiveTrue(id), FoodDto.class);
+    }
+
+    @Override
+    public Food getSingleFoodEntity(int id) {
+        return foodRepository.findFoodByIdAndIsActiveTrue(id)
+                .orElseThrow(() -> new EntityNotFoundException("No Food found with id " + id));
     }
 
     @Override

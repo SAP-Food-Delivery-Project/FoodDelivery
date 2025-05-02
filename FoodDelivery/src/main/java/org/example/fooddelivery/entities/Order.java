@@ -26,6 +26,10 @@ public class Order extends BaseEntity{
 //    @Column(name = "price", nullable = false)
 //    private BigDecimal price;
 
+    @Column(name = "status", nullable = false)
+    @Enumerated(EnumType.STRING)
+    private Status status;
+
     @Column(name = "order_date", nullable = false)
     private LocalDateTime order_date;
 
@@ -47,12 +51,14 @@ public class Order extends BaseEntity{
     @Builder
     public Order(String address,
                  String city,
+                 Status status,
                  LocalDateTime order_date,
                  FoodProducer foodProducer,
                  User user,
                  Delivery delivery){
         this.address = address;
         this.city = city;
+        this.status = status;
         this.order_date = order_date;
         this.foodProducer = foodProducer;
         this.user = user;
