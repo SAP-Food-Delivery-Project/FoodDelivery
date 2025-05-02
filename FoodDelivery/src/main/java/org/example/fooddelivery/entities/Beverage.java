@@ -25,6 +25,10 @@ public class Beverage extends BaseEntity {
     @ManyToOne(fetch = FetchType.LAZY)
     private FoodProducer foodProducer;
 
+    @Column(name = "beverageType", nullable = false)
+    @Enumerated(EnumType.STRING)
+    private BeverageType beverageType;
+
     @Column(name = "is_active", nullable = false)
     private boolean isActive;
 
@@ -32,11 +36,13 @@ public class Beverage extends BaseEntity {
     public Beverage(String name,
                     float liters,
                     BigDecimal price,
-                    FoodProducer foodProducer){
+                    FoodProducer foodProducer,
+                    BeverageType beverageType){
         this.name = name;
         this.liters = liters;
         this.price = price;
         this.foodProducer = foodProducer;
+        this.beverageType = beverageType;
         this.isActive = true;
     }
 
