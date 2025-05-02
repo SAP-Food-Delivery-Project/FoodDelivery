@@ -44,6 +44,7 @@ public class BeverageServiceImpl implements BeverageService {
                             .name(createBeverageDto.getName())
                             .liters(createBeverageDto.getLiters())
                             .price(createBeverageDto.getPrice())
+                            .beverageType(createBeverageDto.getBeverageType())
                             .build();
 
         beverageRepository.save(beverage);
