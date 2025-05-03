@@ -23,11 +23,4 @@ public class UpdateUserDto {
     @Size(min = 9, max = 10, message="Phone number should be 9 symbols!")
     private String phoneNumber;
 
-    @NotNull
-    @Size(min = 2, max = 45, message="Address should be between 2 and 45 symbols!")
-    private String address;
-
-    @NotNull
-    @Size(min = 2, max = 45, message="City should be between 2 and 45 symbols!")
-    private String city;
 }

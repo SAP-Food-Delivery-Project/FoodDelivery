@@ -6,6 +6,7 @@ import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.*;
 
+import java.time.LocalDate;
 import java.util.Set;
 
 @NoArgsConstructor
@@ -14,22 +15,10 @@ import java.util.Set;
 @Setter
 @Table(name = "suppliers")
 @Entity
-public class Supplier extends BaseEntity {
-
-    @Column(name = "first_name", nullable = false)
-    private String firstName;
-
-    @Column(name = "last_name", nullable = false)
-    private String lastName;
-
-    @Column(name = "telephone_number",unique = true, nullable = false)
-    private String phoneNumber;
+public class Supplier extends User {
 
     @Column(name = "rate", nullable = false)
     private double rate;
-
-    @Column(name = "is_active", nullable = false)
-    private boolean isActive;
 
     @OneToMany(mappedBy = "supplier")
     private Set<SupplierBonus> supplierBonuses;
@@ -40,12 +29,19 @@ public class Supplier extends BaseEntity {
     @Builder
     public Supplier(String firstName,
                     String lastName,
+                    String email,
+                    String password,
                     String phoneNumber,
-                    float rate){
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.phoneNumber = phoneNumber;
-        this.rate = rate;
-        this.isActive = true;
+                    LocalDate birthDate){
+        setFirstName(firstName);
+        setLastName(lastName);
+        setEmail(email);
+        setPassword(password);
+        setPhoneNumber(phoneNumber);
+        setBirthDate(birthDate);
+        setRole(Role.supplier);
+        setCreationDate(LocalDate.now());
+        setActive(true);
+        this.rate = 0.0;
     }
 }

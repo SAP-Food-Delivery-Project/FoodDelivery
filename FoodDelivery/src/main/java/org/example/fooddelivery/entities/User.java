@@ -2,9 +2,12 @@ package org.example.fooddelivery.entities;
 
 import jakarta.persistence.*;
 import lombok.*;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
-import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.Collection;
+import java.util.List;
 import java.util.Set;
 
 @NoArgsConstructor
@@ -13,7 +16,8 @@ import java.util.Set;
 @Setter
 @Table(name = "users")
 @Entity
-public class User extends BaseEntity {
+@Inheritance(strategy = InheritanceType.JOINED)
+public class User extends BaseEntity implements UserDetails {
 
     @Column(name = "first_name", nullable = false)
     private String firstName;
@@ -33,18 +37,9 @@ public class User extends BaseEntity {
     @Column(name = "birthday", nullable = false)
     private LocalDate birthDate;
 
-    @Column(name = "address", nullable = false)
-    private String address;
-
-    @Column(name = "city", nullable = false)
-    private String city;
-
-    @Column(name = "balance", nullable = false)
-    private BigDecimal balance;
-
     @Column(name = "role", nullable = false)
     @Enumerated(EnumType.STRING)
-    private Role role;
+    private GrantedAuthority role;
 
     @Column(name = "creation_date", nullable = false)
     private LocalDate creationDate;
@@ -61,23 +56,44 @@ public class User extends BaseEntity {
                 String email,
                 String password,
                 String phoneNumber,
-                LocalDate birthDate,
-                String address,
-                String city,
-                BigDecimal balance,
-                Role role){
+                LocalDate birthDate){
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.password = password;
         this.phoneNumber = phoneNumber;
         this.birthDate = birthDate;
-        this.address = address;
-        this.city = city;
-        this.balance = balance;
-        this.role = role;
         this.creationDate = LocalDate.now();
         this.isActive = true;
     }
 
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return List.of(role);
+    }
+
+    @Override
+    public String getUsername() {
+        return email;
+    }
+
+    @Override
+    public boolean isAccountNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isAccountNonLocked() {
+        return true;
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return true;
+    }
 }

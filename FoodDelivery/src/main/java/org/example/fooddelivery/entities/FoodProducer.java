@@ -1,10 +1,7 @@
 package org.example.fooddelivery.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.*;
 
 import java.util.Set;
@@ -44,18 +41,23 @@ public class FoodProducer extends BaseEntity {
     @OneToMany(mappedBy = "foodProducer")
     private Set<Order> orders;
 
+    @OneToOne(fetch = FetchType.LAZY)
+    private Employee employee;
+
     @Builder
     public FoodProducer(String name,
                         String phoneNumber,
                         String address,
                         String city,
-                        float rate){
+                        float rate,
+                        Employee employee){
 
         this.name = name;
         this.phoneNumber = phoneNumber;
         this.address = address;
         this.city = city;
         this.rate = rate;
+        this.employee = employee;
         this.isActive = true;
     }
 
