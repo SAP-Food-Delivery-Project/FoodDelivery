@@ -1,6 +1,7 @@
 package org.example.fooddelivery.services;
 
 import lombok.RequiredArgsConstructor;
+import org.example.fooddelivery.entities.Employee;
 import org.example.fooddelivery.entities.Supplier;
 import org.example.fooddelivery.entities.SupplierBonus;
 import org.example.fooddelivery.entities.dtos.SupplierDtos.CreateSupplierDto;
@@ -52,7 +53,10 @@ public class SupplierServiceImpl implements SupplierService {
         Supplier supplier = Supplier.builder()
                 .firstName(createSupplierDto.getFirstName())
                 .lastName(createSupplierDto.getLastName())
+                .email(createSupplierDto.getEmail())
+                .password(createSupplierDto.getPassword())
                 .phoneNumber(createSupplierDto.getPhoneNumber())
+                .birthDate(createSupplierDto.getBirthDate())
                 .build();
 
         supplierRepository.save(supplier);

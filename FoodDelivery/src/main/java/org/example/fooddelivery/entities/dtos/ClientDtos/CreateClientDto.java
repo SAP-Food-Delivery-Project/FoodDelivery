@@ -1,5 +1,6 @@
-package org.example.fooddelivery.entities.dtos.UserDtos;
+package org.example.fooddelivery.entities.dtos.ClientDtos;
 
+import jakarta.persistence.Column;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
@@ -7,12 +8,13 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.example.fooddelivery.entities.Role;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class CreateUserDto {
+public class CreateClientDto {
 
     @NotNull
     @Size(min = 2, max = 20, message="Name should be between 2 and 20 symbols!")
@@ -39,4 +41,15 @@ public class CreateUserDto {
 
     @NotNull
     private Role role;
+
+    @NotNull
+    @Size(min = 2, max = 20, message="Address should be between 2 and 20 symbols!")
+    private String address;
+
+    @NotNull
+    @Size(min = 2, max = 20, message="City should be between 2 and 20 symbols!")
+    private String city;
+
+    @NotNull
+    private BigDecimal balance;
 }

@@ -10,9 +10,10 @@ import org.example.fooddelivery.exceptions.EntityNotFoundException;
 import org.example.fooddelivery.repositories.UserRepository;
 import org.example.fooddelivery.services.contracts.UserService;
 import org.example.fooddelivery.util.MapperUtil;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-import java.math.BigDecimal;
 import java.util.List;
 
 @Service
@@ -50,10 +51,6 @@ public class UserServiceImpl implements UserService {
                 .password(createUserDto.getPassword())
                 .phoneNumber(createUserDto.getPhoneNumber())
                 .birthDate(createUserDto.getBirthDate())
-                .address(createUserDto.getAddress())
-                .city(createUserDto.getCity())
-                .balance(new BigDecimal("0"))
-                .role(createUserDto.getRole())
                 .build();
 
         userRepository.save(user);
@@ -71,8 +68,6 @@ public class UserServiceImpl implements UserService {
         user.setEmail(updateUserDto.getEmail());
         user.setPassword(updateUserDto.getPassword());
         user.setPhoneNumber(updateUserDto.getPhoneNumber());
-        user.setCity(updateUserDto.getCity());
-        user.setAddress(updateUserDto.getAddress());
 
         userRepository.save(user);
 
@@ -87,5 +82,11 @@ public class UserServiceImpl implements UserService {
 
         user.setActive(false);
         userRepository.save(user);
+    }
+
+    @Override
+    public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
+        return this.userRepository.findUserByEmailAndIsActiveTrue(email)
+                .orElseThrow(() -> new EntityNotFoundException("User", "email", email));
     }
 }

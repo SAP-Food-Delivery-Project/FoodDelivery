@@ -1,5 +1,6 @@
-package org.example.fooddelivery.entities.dtos.UserDtos;
+package org.example.fooddelivery.entities.dtos.EmployeeDtos;
 
+import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
@@ -12,7 +13,7 @@ import java.time.LocalDate;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class CreateUserDto {
+public class CreateEmployeeDto {
 
     @NotNull
     @Size(min = 2, max = 20, message="Name should be between 2 and 20 symbols!")
@@ -39,4 +40,8 @@ public class CreateUserDto {
 
     @NotNull
     private Role role;
+
+    @NotNull
+    @Min(1)
+    private int foodProducerId;
 }
