@@ -29,10 +29,10 @@ public class UserController {
         return userService.getAllUsers();
     }
 
-    @PostMapping
-    public UserDtoWithIdAndEmail createUser(@RequestBody CreateUserDto createUserDto) {
-        return userService.createUser(createUserDto);
-    }
+//    @PostMapping
+//    public UserDtoWithIdAndEmail createUser(@RequestBody CreateUserDto createUserDto) {
+//        return userService.createUser(createUserDto);
+//    }
 
     @PutMapping("/{id}")
     public UserDto updateUser(@PathVariable int id, @RequestBody UpdateUserDto updateUserDto) {

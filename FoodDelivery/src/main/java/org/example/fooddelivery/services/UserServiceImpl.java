@@ -2,10 +2,8 @@ package org.example.fooddelivery.services;
 
 import lombok.RequiredArgsConstructor;
 import org.example.fooddelivery.entities.User;
-import org.example.fooddelivery.entities.dtos.UserDtos.CreateUserDto;
 import org.example.fooddelivery.entities.dtos.UserDtos.UpdateUserDto;
 import org.example.fooddelivery.entities.dtos.UserDtos.UserDto;
-import org.example.fooddelivery.entities.dtos.UserDtos.UserDtoWithIdAndEmail;
 import org.example.fooddelivery.exceptions.EntityNotFoundException;
 import org.example.fooddelivery.repositories.UserRepository;
 import org.example.fooddelivery.services.contracts.UserService;
@@ -41,22 +39,22 @@ public class UserServiceImpl implements UserService {
         return mapperUtil.mapList(userRepository.findAllByIsActiveTrue(), UserDto.class);
     }
 
-    @Override
-    public UserDtoWithIdAndEmail createUser(CreateUserDto createUserDto) {
-
-        User user = User.builder()
-                .firstName(createUserDto.getFirstName())
-                .lastName(createUserDto.getLastName())
-                .email(createUserDto.getEmail())
-                .password(createUserDto.getPassword())
-                .phoneNumber(createUserDto.getPhoneNumber())
-                .birthDate(createUserDto.getBirthDate())
-                .build();
-
-        userRepository.save(user);
-
-        return mapperUtil.getModelMapper().map(user, UserDtoWithIdAndEmail.class);
-    }
+//    @Override
+//    public UserDtoWithIdAndEmail createUser(CreateUserDto createUserDto) {
+//
+//        User user = User.builder()
+//                .firstName(createUserDto.getFirstName())
+//                .lastName(createUserDto.getLastName())
+//                .email(createUserDto.getEmail())
+//                .password(createUserDto.getPassword())
+//                .phoneNumber(createUserDto.getPhoneNumber())
+//                .birthDate(createUserDto.getBirthDate())
+//                .build();
+//
+//        userRepository.save(user);
+//
+//        return mapperUtil.getModelMapper().map(user, UserDtoWithIdAndEmail.class);
+//    }
 
     @Override
     public UserDto updateUser(UpdateUserDto updateUserDto, int id) {

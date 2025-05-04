@@ -1,6 +1,13 @@
 package org.example.fooddelivery.entities;
 
-public enum Role {
+import org.springframework.security.core.GrantedAuthority;
 
-        client, employee, supplier
+public enum Role implements GrantedAuthority {
+
+        client, employee, supplier;
+
+        @Override
+        public String getAuthority() {
+                return "ROLE_" + name();
+        }
 }

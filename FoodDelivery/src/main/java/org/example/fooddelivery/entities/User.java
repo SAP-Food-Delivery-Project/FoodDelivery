@@ -39,7 +39,7 @@ public class User extends BaseEntity implements UserDetails {
 
     @Column(name = "role", nullable = false)
     @Enumerated(EnumType.STRING)
-    private GrantedAuthority role;
+    private Role role;
 
     @Column(name = "creation_date", nullable = false)
     private LocalDate creationDate;
@@ -50,22 +50,22 @@ public class User extends BaseEntity implements UserDetails {
     @OneToMany(mappedBy = "user")
     private Set<Order> orders;
 
-    @Builder
-    public User(String firstName,
-                String lastName,
-                String email,
-                String password,
-                String phoneNumber,
-                LocalDate birthDate){
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.email = email;
-        this.password = password;
-        this.phoneNumber = phoneNumber;
-        this.birthDate = birthDate;
-        this.creationDate = LocalDate.now();
-        this.isActive = true;
-    }
+//    @Builder
+//    public User(String firstName,
+//                String lastName,
+//                String email,
+//                String password,
+//                String phoneNumber,
+//                LocalDate birthDate){
+//        this.firstName = firstName;
+//        this.lastName = lastName;
+//        this.email = email;
+//        this.password = password;
+//        this.phoneNumber = phoneNumber;
+//        this.birthDate = birthDate;
+//        this.creationDate = LocalDate.now();
+//        this.isActive = true;
+//    }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

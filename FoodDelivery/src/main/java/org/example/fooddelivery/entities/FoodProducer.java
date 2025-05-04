@@ -1,6 +1,5 @@
 package org.example.fooddelivery.entities;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -49,15 +48,13 @@ public class FoodProducer extends BaseEntity {
                         String phoneNumber,
                         String address,
                         String city,
-                        float rate,
-                        Employee employee){
+                        float rate){
 
         this.name = name;
         this.phoneNumber = phoneNumber;
         this.address = address;
         this.city = city;
         this.rate = rate;
-        this.employee = employee;
         this.isActive = true;
     }
 

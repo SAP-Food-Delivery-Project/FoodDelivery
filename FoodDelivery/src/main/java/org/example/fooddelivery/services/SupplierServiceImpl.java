@@ -38,13 +38,13 @@ public class SupplierServiceImpl implements SupplierService {
     @Override
     public List<SupplierDto> getAllSupplierByName(String name) {
         return mapperUtil
-                .mapList(supplierRepository.findSupplierByNameAndIsActiveTrue(name), SupplierDto.class);
+                .mapList(supplierRepository.findSupplierByEmailAndIsActiveTrue(name), SupplierDto.class);
     }
 
     @Override
     public List<SupplierDto> getAllSupplier() {
         return mapperUtil
-                .mapList(supplierRepository.findAllAndIsActiveTrue(), SupplierDto.class);
+                .mapList(supplierRepository.findAllByIsActiveTrue(), SupplierDto.class);
     }
 
     @Override

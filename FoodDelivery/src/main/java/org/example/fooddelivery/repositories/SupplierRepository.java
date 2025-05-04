@@ -10,9 +10,9 @@ public interface SupplierRepository extends JpaRepository<Supplier, Integer> {
 
     Optional<Supplier> findSupplierByIdAndIsActiveTrue(Integer integer);
 
-    List<Supplier> findSupplierByNameAndIsActiveTrue(String name);
+    List<Supplier> findSupplierByEmailAndIsActiveTrue(String email);
 
-    List<Supplier> findAllAndIsActiveTrue();
+    List<Supplier> findAllByIsActiveTrue();
 
 
 }
