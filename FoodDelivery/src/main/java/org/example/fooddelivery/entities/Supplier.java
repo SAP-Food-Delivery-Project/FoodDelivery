@@ -1,9 +1,6 @@
 package org.example.fooddelivery.entities;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.*;
 
 import java.time.LocalDate;
@@ -25,6 +22,11 @@ public class Supplier extends User {
 
     @OneToMany(mappedBy = "supplier")
     private Set<Delivery> delivery;
+
+    @OneToOne
+    @MapsId
+    @JoinColumn(name = "id")
+    private User user;
 
     @Builder
     public Supplier(String firstName,

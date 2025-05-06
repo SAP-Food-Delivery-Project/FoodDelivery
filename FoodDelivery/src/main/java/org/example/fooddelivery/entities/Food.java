@@ -40,7 +40,7 @@ public class Food extends BaseEntity {
     @ManyToOne(fetch = FetchType.LAZY)
     private FoodProducer foodProducer;
 
-    @Column(name = "foodType", nullable = false)
+    @Column(name = "food_type", nullable = false)
     @Enumerated(EnumType.STRING)
     private FoodType foodType;
 

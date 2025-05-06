@@ -40,7 +40,7 @@ public class FoodProducer extends BaseEntity {
     @OneToMany(mappedBy = "foodProducer")
     private Set<Order> orders;
 
-    @OneToOne(fetch = FetchType.LAZY)
+    @OneToOne(mappedBy = "foodProducer")
     private Employee employee;
 
     @Builder

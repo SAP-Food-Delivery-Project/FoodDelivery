@@ -29,7 +29,7 @@ public class CreateClientDto {
     private String email;
 
     @NotNull
-    @Size(min = 2, max = 50, message="Password should be between 2 and 50 symbols!")
+    @Size(min = 2, max = 150, message="Password should be between 2 and 50 symbols!")
     private String password;
 
     @NotNull

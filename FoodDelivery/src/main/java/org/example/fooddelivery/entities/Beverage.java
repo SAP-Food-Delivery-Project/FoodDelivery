@@ -25,7 +25,7 @@ public class Beverage extends BaseEntity {
     @ManyToOne(fetch = FetchType.LAZY)
     private FoodProducer foodProducer;
 
-    @Column(name = "beverageType", nullable = false)
+    @Column(name = "beverage_type", nullable = false)
     @Enumerated(EnumType.STRING)
     private BeverageType beverageType;
 
