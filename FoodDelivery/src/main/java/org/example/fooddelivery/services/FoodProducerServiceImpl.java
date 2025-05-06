@@ -23,9 +23,11 @@ public class FoodProducerServiceImpl implements FoodProducerService {
 
     @Override
     public FoodProducerDto getSingleFoodProducer(int id){
+        FoodProducer producer = foodProducerRepository.findFoodProducerByIdAndIsActiveTrue(id)
+                .orElseThrow(() -> new EntityNotFoundException("No FoodProducer found with id: " + id));
+
         return mapperUtil.getModelMapper()
-                        .map(foodProducerRepository.findFoodProducerByIdAndIsActiveTrue(id),
-                            FoodProducerDto.class);
+                .map(producer, FoodProducerDto.class);
     }
 
     @Override
@@ -37,16 +39,20 @@ public class FoodProducerServiceImpl implements FoodProducerService {
 
     @Override
     public FoodProducerDto getSingleFoodProducer(String name) {
+        FoodProducer producer = foodProducerRepository.findFoodProducerByNameAndIsActiveTrue(name)
+                .orElseThrow(() -> new EntityNotFoundException("No FoodProducer found with name: " + name));
+
         return mapperUtil.getModelMapper()
-                        .map(foodProducerRepository.findFoodProducerByNameAndIsActiveTrue(name),
-                            FoodProducerDto.class);
+                .map(producer, FoodProducerDto.class);
     }
 
     @Override
     public FoodProducerDto getSingleFoodProducer(String city, String address) {
+        FoodProducer producer = foodProducerRepository.findFoodProducerByCityAndAddressAndIsActiveTrue(city, address)
+                .orElseThrow(() -> new EntityNotFoundException("No FoodProducer found with city and address: " + city + ", " + address));
+
         return mapperUtil.getModelMapper()
-                .map(foodProducerRepository.findFoodProducerByCityAndAddressAndIsActiveTrue(city, address),
-                        FoodProducerDto.class);
+                .map(producer, FoodProducerDto.class);
     }
 
     @Override
@@ -56,7 +62,7 @@ public class FoodProducerServiceImpl implements FoodProducerService {
     }
 
     @Override
-    public FoodProducerDtoWithId createFoodProducer( CreateFoodProducerDto createFoodProducerDto){
+    public FoodProducerDtoWithId createFoodProducer(CreateFoodProducerDto createFoodProducerDto){
 
         FoodProducer foodProducer = FoodProducer.builder()
                                     .name(createFoodProducerDto.getName())
