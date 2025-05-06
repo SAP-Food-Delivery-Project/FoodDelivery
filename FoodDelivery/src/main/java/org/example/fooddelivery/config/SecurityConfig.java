@@ -50,6 +50,11 @@ public class SecurityConfig {
                                         .requestMatchers(HttpMethod.GET, "/api/orders/turnover").hasRole("employee")
                                         .requestMatchers(HttpMethod.GET, "/api/suppliers/incomes").hasRole("employee")
                                         .requestMatchers(HttpMethod.POST, "/api/supplier/bonuses").hasRole("employee")
+                                        .requestMatchers(
+                                                "/swagger-ui/**",
+                                                "/v3/api-docs/**",
+                                                "/swagger-ui.html"
+                                        ).permitAll()
                                         .anyRequest().authenticated()
                         )
 
