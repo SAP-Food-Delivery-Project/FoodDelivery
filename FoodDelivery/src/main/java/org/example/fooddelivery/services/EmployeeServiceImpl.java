@@ -25,8 +25,12 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     @Override
     public EmployeeDto getSingleEmployee(int id) {
+
+        Employee employee = employeeRepository.findByIdAndIsActiveTrue(id).orElseThrow(
+                () -> new EntityNotFoundException("Employee with id " + id + " not found"));
+
         return mapperUtil.getModelMapper()
-                .map(employeeRepository.findByIdAndIsActiveTrue(id), EmployeeDto.class);
+                .map(employee, EmployeeDto.class);
     }
 
     @Override

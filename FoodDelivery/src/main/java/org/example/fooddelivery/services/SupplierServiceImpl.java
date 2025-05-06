@@ -25,8 +25,12 @@ public class SupplierServiceImpl implements SupplierService {
 
     @Override
     public SupplierDto getSingleSupplier(int id) {
+
+        Supplier supplier = supplierRepository.findSupplierByIdAndIsActiveTrue(id)
+                .orElseThrow(() -> new EntityNotFoundException("Supplier with id " + id + " not found"));
+
         return mapperUtil.getModelMapper()
-                        .map(supplierRepository.findSupplierByIdAndIsActiveTrue(id), SupplierDto.class);
+                        .map(supplier, SupplierDto.class);
     }
 
     @Override
