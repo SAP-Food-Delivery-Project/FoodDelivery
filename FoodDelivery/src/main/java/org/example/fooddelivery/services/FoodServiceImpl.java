@@ -50,7 +50,7 @@ public class FoodServiceImpl implements FoodService {
     @Override
     public List<FoodDto> getAllFilteredFood(int id, FoodType foodType) {
         return mapperUtil.mapList
-                        (foodRepository.findAllFoodByFoodTypeAndFoodProducerIdAndIsActiveTrue(id, foodType), FoodDto.class);
+                        (foodRepository.findAllByFoodTypeAndFoodProducerIdAndIsActiveTrue(foodType, id), FoodDto.class);
     }
 
     @Override
