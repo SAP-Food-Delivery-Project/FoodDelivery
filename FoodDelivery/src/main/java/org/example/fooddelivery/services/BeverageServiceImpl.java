@@ -50,8 +50,8 @@ public class BeverageServiceImpl implements BeverageService {
     @Override
     public List<BeverageDto> getAllFilteredBeverage(int id, BeverageType beverageType) {
         return mapperUtil.mapList
-                (beverageRepository.findAllBeverageByBeverageTypeAndFoodProducerIdAndIsActiveTrue
-                        (id, beverageType), BeverageDto.class);
+                (beverageRepository.findAllByBeverageTypeAndFoodProducerIdAndIsActiveTrue
+                        (beverageType, id), BeverageDto.class);
     }
 
     @Override

@@ -15,6 +15,6 @@ public interface BeverageRepository extends JpaRepository<Beverage, Integer> {
 
     List<Beverage> findAllBeverageByFoodProducerIdAndIsActiveTrue(int foodProducerId);
 
-    List<Beverage> findAllBeverageByBeverageTypeAndFoodProducerIdAndIsActiveTrue
-            (int id, BeverageType beverageType);
+    List<Beverage> findAllByBeverageTypeAndFoodProducerIdAndIsActiveTrue
+            (BeverageType beverageType, int id);
 }

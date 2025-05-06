@@ -16,7 +16,7 @@ public interface FoodRepository extends JpaRepository<Food, Integer> {
 
     List<Food> findAllFoodByFoodProducerIdAndIsActiveTrue(int id);
 
-    List<Food> findAllFoodByFoodTypeAndFoodProducerIdAndIsActiveTrue(int id, FoodType foodType);
+    List<Food> findAllByFoodTypeAndFoodProducerIdAndIsActiveTrue(FoodType foodType, int id);
 
 
 }
