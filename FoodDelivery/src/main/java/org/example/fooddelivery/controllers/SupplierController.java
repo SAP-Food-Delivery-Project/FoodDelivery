@@ -2,15 +2,15 @@ package org.example.fooddelivery.controllers;
 
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
-import org.example.fooddelivery.entities.dtos.SupplierDtos.CreateSupplierDto;
-import org.example.fooddelivery.entities.dtos.SupplierDtos.SupplierDto;
-import org.example.fooddelivery.entities.dtos.SupplierDtos.SupplierDtoWithId;
-import org.example.fooddelivery.entities.dtos.SupplierDtos.UpdateSupplierDto;
+import org.example.fooddelivery.entities.dtos.SupplierDtos.*;
+import org.example.fooddelivery.services.contracts.SupplierOperationsService;
 import org.example.fooddelivery.services.contracts.SupplierService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 
@@ -20,6 +20,7 @@ import java.util.List;
 public class SupplierController {
 
     private final SupplierService supplierService;
+    private final SupplierOperationsService supplierOperationsService;
 
     @GetMapping("/{id}")
     public SupplierDto getSupplierById(int id){
@@ -49,7 +50,11 @@ public class SupplierController {
     @DeleteMapping("/{id}")
     public ResponseEntity<String> deactivateSupplier(@Valid @PathVariable int id){
         supplierService.deactivateSupplier(id);
-
         return ResponseEntity.ok("Supplier deactivated successfully!");
+    }
+
+    @GetMapping("/incomes")
+    public List<SupplierIncomeDto> getAllSupplierIncome(@RequestParam LocalDateTime startDate, @RequestParam LocalDateTime endDate){
+        return supplierOperationsService.getSupplierIncomeDto(startDate, endDate);
     }
 }

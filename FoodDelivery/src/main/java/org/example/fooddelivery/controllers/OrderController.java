@@ -7,10 +7,13 @@ import org.example.fooddelivery.entities.dtos.OrderDtos.CreateOrderDto;
 import org.example.fooddelivery.entities.dtos.OrderDtos.OrderDto;
 import org.example.fooddelivery.entities.dtos.OrderDtos.OrderDtoWithId;
 import org.example.fooddelivery.entities.dtos.OrderDtos.UpdateOrderDto;
+import org.example.fooddelivery.services.contracts.OrderOperationsService;
 import org.example.fooddelivery.services.contracts.OrderService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.util.List;
 
 @RestController
@@ -19,6 +22,7 @@ import java.util.List;
 public class OrderController {
 
     private final OrderService orderService;
+    private final OrderOperationsService orderOperationsService;
 
     @GetMapping("/{id}")
     public OrderDto getOrderById(@PathVariable int id) {
@@ -45,6 +49,11 @@ public class OrderController {
     public ResponseEntity<String> deactivateOrder(@Valid @PathVariable int id){
         orderService.deactivateOrder(id);
         return ResponseEntity.ok("Order deactivated successfully!");
+    }
+
+    @GetMapping("/turnover")
+    public BigDecimal getTurnoverOfTheCompanyInGivenPeriod(@RequestParam LocalDate startDate, @RequestParam LocalDate endDate) {
+       return orderOperationsService.getTurnoverOfTheCompanyInGivenPeriod(startDate, endDate);
     }
 
 }

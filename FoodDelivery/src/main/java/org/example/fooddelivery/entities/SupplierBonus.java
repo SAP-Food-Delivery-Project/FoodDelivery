@@ -18,7 +18,7 @@ public class SupplierBonus extends BaseEntity{
     private BigDecimal bonus;
 
     @Column(name = "current_day", nullable = false)
-    private LocalDate current_day;
+    private LocalDate currentDay;
 
     @ManyToOne(fetch = FetchType.LAZY)
     private Supplier supplier;
@@ -32,7 +32,7 @@ public class SupplierBonus extends BaseEntity{
                          Supplier supplier){
         this.bonus = bonus;
         this.supplier = supplier;
-        this.current_day = LocalDate.now();
+        this.currentDay = LocalDate.now();
         this.isActive = true;
     }
 }

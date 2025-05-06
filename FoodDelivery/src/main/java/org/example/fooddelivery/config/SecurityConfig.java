@@ -44,9 +44,13 @@ public class SecurityConfig {
         http.authorizeHttpRequests
                         (
                                 authz -> authz
+                                        .requestMatchers(HttpMethod.POST, "/api/foodproducers").hasRole("employee")
+                                        .requestMatchers(HttpMethod.PUT, "/api/foodproducers/{id}").hasRole("employee")
+                                        .requestMatchers(HttpMethod.DELETE, "/api/foodproducers/{id}").hasRole("employee")
+                                        .requestMatchers(HttpMethod.GET, "/api/orders/turnover").hasRole("employee")
+                                        .requestMatchers(HttpMethod.GET, "/api/suppliers/incomes").hasRole("employee")
+                                        .requestMatchers(HttpMethod.POST, "/api/supplier/bonuses").hasRole("employee")
                                         .anyRequest().authenticated()
-
-
                         )
 
                 .csrf(csrf -> csrf.disable())

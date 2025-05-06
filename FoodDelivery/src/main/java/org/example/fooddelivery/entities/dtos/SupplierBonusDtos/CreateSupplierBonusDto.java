@@ -23,5 +23,5 @@ public class CreateSupplierBonusDto {
     private LocalDate currentDay;
 
     @NotNull
-    private Supplier supplier;
+    private int supplierId;
 }
