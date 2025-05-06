@@ -5,6 +5,8 @@ import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.example.fooddelivery.entities.Status;
+
 import java.time.LocalDateTime;
 
 @Data
@@ -22,6 +24,9 @@ public class CreateOrderDto {
 
     @NotNull
     private LocalDateTime orderDate;
+
+    @NotNull
+    private Status status;
 
     @NotNull
     private int foodProducerId;

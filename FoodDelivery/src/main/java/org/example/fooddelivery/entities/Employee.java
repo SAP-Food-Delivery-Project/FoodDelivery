@@ -13,7 +13,7 @@ import java.time.LocalDate;
 @Entity
 public class Employee extends User {
 
-    @OneToOne(fetch = FetchType.LAZY)
+    @OneToOne(mappedBy = "employee")
     private FoodProducer foodProducer;
 
 

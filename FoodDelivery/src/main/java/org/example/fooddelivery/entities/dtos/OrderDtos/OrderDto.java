@@ -9,6 +9,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.example.fooddelivery.entities.Delivery;
 import org.example.fooddelivery.entities.FoodProducer;
+import org.example.fooddelivery.entities.Status;
 import org.example.fooddelivery.entities.dtos.DeliveryDtos.DeliveryDto;
 import org.example.fooddelivery.entities.dtos.FoodProductDtos.FoodProducerDto;
 import org.example.fooddelivery.entities.dtos.UserDtos.UserDto;
@@ -30,6 +31,8 @@ public class OrderDto {
     private LocalDateTime order_date;
 
     private boolean order_cancelled;
+
+    private Status status;
 
     private FoodProducerDto foodProducer;
 

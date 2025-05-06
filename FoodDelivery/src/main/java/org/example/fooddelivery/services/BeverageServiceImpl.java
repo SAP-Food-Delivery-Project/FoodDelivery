@@ -2,6 +2,7 @@ package org.example.fooddelivery.services;
 
 import lombok.RequiredArgsConstructor;
 import org.example.fooddelivery.entities.Beverage;
+import org.example.fooddelivery.entities.BeverageType;
 import org.example.fooddelivery.entities.dtos.BeverageDtos.BeverageDto;
 import org.example.fooddelivery.entities.dtos.BeverageDtos.BeverageDtoWithId;
 import org.example.fooddelivery.entities.dtos.BeverageDtos.CreateBeverageDto;
@@ -11,6 +12,8 @@ import org.example.fooddelivery.repositories.BeverageRepository;
 import org.example.fooddelivery.services.contracts.BeverageService;
 import org.example.fooddelivery.util.MapperUtil;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 @RequiredArgsConstructor
@@ -35,6 +38,20 @@ public class BeverageServiceImpl implements BeverageService {
     public BeverageDto getSingleBeverageByName(String name) {
         return mapperUtil.getModelMapper()
                 .map(beverageRepository.findBeverageByNameAndIsActiveTrue(name), BeverageDto.class);
+    }
+
+    @Override
+    public List<BeverageDto> getAllBeverageFromFoodProducer(int foodProducerId) {
+        return mapperUtil.mapList
+                (beverageRepository.findAllBeverageByFoodProducerIdAndIsActiveTrue(foodProducerId),
+                        BeverageDto.class);
+    }
+
+    @Override
+    public List<BeverageDto> getAllFilteredBeverage(int id, BeverageType beverageType) {
+        return mapperUtil.mapList
+                (beverageRepository.findAllBeverageByBeverageTypeAndFoodProducerIdAndIsActiveTrue
+                        (id, beverageType), BeverageDto.class);
     }
 
     @Override

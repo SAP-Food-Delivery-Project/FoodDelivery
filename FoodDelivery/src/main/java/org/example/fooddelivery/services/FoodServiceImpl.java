@@ -2,6 +2,7 @@ package org.example.fooddelivery.services;
 
 import lombok.RequiredArgsConstructor;
 import org.example.fooddelivery.entities.Food;
+import org.example.fooddelivery.entities.FoodType;
 import org.example.fooddelivery.entities.dtos.FoodDtos.CreateFoodDto;
 import org.example.fooddelivery.entities.dtos.FoodDtos.FoodDto;
 import org.example.fooddelivery.entities.dtos.FoodDtos.FoodDtoWithId;
@@ -11,6 +12,8 @@ import org.example.fooddelivery.repositories.FoodRepository;
 import org.example.fooddelivery.services.contracts.FoodService;
 import org.example.fooddelivery.util.MapperUtil;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 @RequiredArgsConstructor
@@ -36,6 +39,18 @@ public class FoodServiceImpl implements FoodService {
 
         return mapperUtil.getModelMapper()
                 .map(foodRepository.findFoodByNameAndIsActiveTrue(name), FoodDto.class);
+    }
+
+    @Override
+    public List<FoodDto> getAllFoodsFromFoodProducer(int foodProducerId) {
+        return mapperUtil.mapList
+            (foodRepository.findAllFoodByFoodProducerIdAndIsActiveTrue(foodProducerId), FoodDto.class);
+    }
+
+    @Override
+    public List<FoodDto> getAllFilteredFood(int id, FoodType foodType) {
+        return mapperUtil.mapList
+                        (foodRepository.findAllFoodByFoodTypeAndFoodProducerIdAndIsActiveTrue(id, foodType), FoodDto.class);
     }
 
     @Override

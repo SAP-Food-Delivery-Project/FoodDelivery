@@ -50,6 +50,7 @@ public class OrderServiceImpl implements OrderService {
                 .address(createOrderDto.getAddress())
                 .city(createOrderDto.getCity())
                 .order_date(createOrderDto.getOrderDate())
+                .status(createOrderDto.getStatus())
                 .foodProducer(foodProducerService.getSingleFoodProducerEntity(createOrderDto.getFoodProducerId()))
                 .user(userService.getSingleUserEntity(createOrderDto.getUserId()))
                 .build();
@@ -69,6 +70,7 @@ public class OrderServiceImpl implements OrderService {
         if(order.getDelivery() != null){
             order.setAddress(updateOrderDto.getAddress());
             order.setCity(updateOrderDto.getCity());
+            order.setStatus(updateOrderDto.getStatus());
         }else {
             throw new OperationNotSupportedException("Order will be delivered and the location can not be modified!");
         }

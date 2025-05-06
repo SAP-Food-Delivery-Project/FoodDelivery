@@ -5,6 +5,7 @@ import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.example.fooddelivery.entities.Status;
 
 @Data
 @NoArgsConstructor
@@ -18,4 +19,7 @@ public class UpdateOrderDto {
     @NotNull
     @Size(min = 2, max = 45, message = "City must be between 2 and 45 symbols!")
     private String city;
+
+    @NotNull
+    private Status status;
 }
