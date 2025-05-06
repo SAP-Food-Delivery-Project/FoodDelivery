@@ -23,8 +23,12 @@ public class ClientServiceImpl implements ClientService {
 
     @Override
     public ClientDto getSingleClient(int id) {
+
+        Client client = clientRepository.findByIdAndIsActiveTrue(id)
+                .orElseThrow(() -> new EntityNotFoundException("Client with id " + id + " not found"));
+
         return mapperUtil.getModelMapper()
-                .map(clientRepository.findByIdAndIsActiveTrue(id), ClientDto.class);
+                .map(client, ClientDto.class);
     }
 
     @Override

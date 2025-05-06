@@ -110,7 +110,7 @@ public class FoodProducerServiceImplTests {
     @Test
     void testGetSingleFoodProducerById() {
         int id = 1;
-        FoodProducer foodProducer = new FoodProducer(); // или можеш да му зададеш стойности
+        FoodProducer foodProducer = new FoodProducer();
         FoodProducerDto expectedDto = new FoodProducerDto();
 
         when(foodProducerRepository.findFoodProducerByIdAndIsActiveTrue(id)).thenReturn(Optional.of(foodProducer));

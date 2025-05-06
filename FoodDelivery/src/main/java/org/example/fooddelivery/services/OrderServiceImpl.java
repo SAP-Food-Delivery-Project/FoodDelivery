@@ -28,7 +28,10 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     public OrderDto getOrderById(int id) {
-        return mapperUtil.getModelMapper().map(orderRepository.findOrderByIdAndIsActiveTrue(id), OrderDto.class);
+        Order order = orderRepository.findOrderByIdAndIsActiveTrue(id)
+                .orElseThrow(() -> new EntityNotFoundException("Order with " + id + " not found"));
+
+        return mapperUtil.getModelMapper().map(order, OrderDto.class);
     }
 
     @Override
